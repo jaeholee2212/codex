@@ -10,7 +10,8 @@
     "test": "pnpm --filter @openai/codex run test",
     "lint": "pnpm --filter @openai/codex run lint",
     "lint:fix": "pnpm --filter @openai/codex run lint:fix",
-    "typecheck": "pnpm --filter @openai/codex run typecheck",
+  "typecheck": "pnpm --filter @openai/codex run typecheck",
+  "web": "node web/server.mjs",
     "changelog": "git-cliff --config cliff.toml --output CHANGELOG.ignore.md $LAST_RELEASE_TAG..HEAD",
     "prepare": "husky",
     "husky:add": "husky add"
