@@ -14,6 +14,7 @@
 
 - [Experimental technology disclaimer](#experimental-technology-disclaimer)
 - [Quickstart](#quickstart)
+- [Web demo](#web-demo)
 - [Why Codex?](#why-codex)
 - [Security model & permissions](#security-model--permissions)
   - [Platform sandboxing details](#platform-sandboxing-details)
@@ -142,6 +143,20 @@ codex --approval-mode full-auto "create the fanciest todo-list app"
 That's it - Codex will scaffold a file, run it inside a sandbox, install any
 missing dependencies, and show you the live result. Approve the changes and
 they'll be committed to your working directory.
+
+## Web demo
+
+This repo also contains a very small web interface that communicates with the
+Codex agent via WebSockets. Start it with:
+
+```bash
+pnpm web
+```
+
+Then open <http://localhost:3000> in your browser and enter a prompt. Results
+appear in the page as they stream back from the agent.
+
+See [docs/web.md](docs/web.md) for a short guide.
 
 ---
 

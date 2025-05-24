@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Codex Web</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    #messages { white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; min-height: 200px; }
+  </style>
+</head>
+<body>
+  <div id="messages"></div>
+  <input id="prompt" type="text" style="width:80%" placeholder="Type your prompt" />
+  <button id="send">Send</button>
+  <script>
+    const ws = new WebSocket(`ws://${location.host}/ws`);
+    const messages = document.getElementById('messages');
+    ws.addEventListener('message', ev => {
+      const msg = JSON.parse(ev.data);
+      if (msg.type === 'loading') return;
+      messages.textContent += '\n' + JSON.stringify(msg, null, 2);
+    });
+    document.getElementById('send').addEventListener('click', () => {
+      const text = document.getElementById('prompt').value;
+      ws.send(JSON.stringify({ prompt: text }));
+    });
+  </script>
+</body>
+</html>
